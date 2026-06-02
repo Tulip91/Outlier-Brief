@@ -1,0 +1,14 @@
+node_modules
+.npm-bootstrap
+npm-bootstrap.tgz
+.mingit
+mingit.zip
+.next
+.vercel
+out
+dist
+*.log
+dev-server*.log
+.env*
+!.env.example
+.DS_Store
