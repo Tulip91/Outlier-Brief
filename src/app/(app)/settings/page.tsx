@@ -1,5 +1,6 @@
 import { PageHeader } from "@/components/app-shell";
-import { Button, Card } from "@/components/ui";
+import { ActionButton } from "@/components/interactive";
+import { Card } from "@/components/ui";
 export const metadata = { title: "Settings" };
 const field =
   "mt-2 w-full rounded-xl border border-white/[0.1] bg-black/20 px-3 py-2.5 text-sm text-white";
@@ -107,7 +108,9 @@ export default function Settings() {
           </div>
         </Card>
       </div>
-      <Button className="mt-6">Save Settings</Button>
+      <ActionButton className="mt-6" done="Settings updated" variant="primary">
+        Save Settings
+      </ActionButton>
     </>
   );
 }

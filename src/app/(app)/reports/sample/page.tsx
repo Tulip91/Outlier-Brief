@@ -4,7 +4,8 @@ import {
   OutlierTable,
   TrendCard,
 } from "@/components/data-display";
-import { Badge, Button, Card } from "@/components/ui";
+import { ActionButton } from "@/components/interactive";
+import { Badge, Card } from "@/components/ui";
 import { contentIdeas, outliers, trends } from "@/lib/mock-data";
 export const metadata = { title: "Minecraft Niche Analysis" };
 const analysis = [
@@ -46,8 +47,10 @@ export default function SampleReport() {
         subtitle="Generated June 2026 from 12 tracked competitor channels."
         actions={
           <>
-            <Button variant="secondary">Export PDF</Button>
-            <Button>Save Ideas</Button>
+            <ActionButton done="PDF queued">Export PDF</ActionButton>
+            <ActionButton done="10 ideas saved" variant="primary">
+              Save Ideas
+            </ActionButton>
           </>
         }
       />

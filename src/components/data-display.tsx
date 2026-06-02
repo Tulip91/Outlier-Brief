@@ -18,7 +18,8 @@ export function StatCard({
   detail: string;
 }) {
   return (
-    <Card className="p-5">
+    <Card className="group relative overflow-hidden p-5 hover:-translate-y-0.5 hover:border-blue-400/20">
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent opacity-0 transition group-hover:opacity-100" />
       <p className="text-xs font-medium uppercase tracking-wider text-slate-500">
         {label}
       </p>
@@ -54,7 +55,7 @@ export function OutlierTable({
           <tbody className="divide-y divide-white/[0.06]">
             {videos.map((video) => (
               <tr
-                className="text-slate-300 transition hover:bg-white/[0.025]"
+                className="text-slate-300 transition-all duration-200 hover:bg-blue-400/[0.045]"
                 key={video.title}
               >
                 <td className="max-w-xs px-5 py-4 font-medium text-white">
@@ -99,7 +100,10 @@ export function CompetitorTable({ items }: { items: Competitor[] }) {
           </thead>
           <tbody className="divide-y divide-white/[0.06]">
             {items.map((item) => (
-              <tr key={item.channel}>
+              <tr
+                className="transition-colors hover:bg-blue-400/[0.035]"
+                key={item.channel}
+              >
                 <td className="px-5 py-4 font-medium text-white">
                   {item.channel}
                 </td>
@@ -135,14 +139,16 @@ export function ContentIdeaCard({
   detailed?: boolean;
 }) {
   return (
-    <Card className="flex h-full flex-col p-5">
+    <Card className="group flex h-full flex-col p-5 hover:-translate-y-1 hover:border-violet-400/25 hover:bg-violet-400/[0.035]">
       <div className="flex items-start justify-between gap-3">
         <Badge tone="violet">{idea.pattern}</Badge>
         <span className="text-sm font-semibold text-emerald-300">
           {idea.confidence}%
         </span>
       </div>
-      <h3 className="mt-4 font-semibold leading-6 text-white">{idea.title}</h3>
+      <h3 className="mt-4 font-semibold leading-6 text-white transition group-hover:text-blue-100">
+        {idea.title}
+      </h3>
       <p className="mt-2 flex-1 text-sm leading-6 text-slate-400">
         {idea.reason}
       </p>
@@ -158,7 +164,7 @@ export function ContentIdeaCard({
 
 export function TrendCard({ trend }: { trend: Trend }) {
   return (
-    <Card className="p-5">
+    <Card className="p-5 hover:-translate-y-1 hover:border-emerald-400/20">
       <div className="flex justify-between gap-3">
         <h3 className="font-semibold text-white">{trend.title}</h3>
         <Badge tone={trend.strength === "High" ? "green" : "blue"}>
@@ -174,7 +180,7 @@ export function TrendCard({ trend }: { trend: Trend }) {
 
 export function ReportCard({ report }: { report: Report }) {
   return (
-    <Card className="p-6">
+    <Card className="p-6 hover:-translate-y-1 hover:border-blue-400/25">
       <p className="text-xs font-bold uppercase tracking-widest text-blue-300">
         {report.date}
       </p>

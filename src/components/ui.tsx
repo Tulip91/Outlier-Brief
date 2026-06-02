@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -8,18 +9,21 @@ export function Button({
   variant = "primary",
   className = "",
   type = "button",
+  onClick,
 }: {
   children: ReactNode;
   href?: string;
   variant?: "primary" | "secondary" | "ghost";
   className?: string;
   type?: "button" | "submit";
+  onClick?: () => void;
 }) {
   const styles = cn(
-    "inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400/80",
-    variant === "primary" && "bg-white text-slate-950 hover:bg-blue-100",
+    "group inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400/80 active:translate-y-px",
+    variant === "primary" &&
+      "bg-white text-slate-950 shadow-[0_8px_24px_rgba(219,234,254,0.08)] hover:-translate-y-0.5 hover:bg-blue-100 hover:shadow-[0_12px_30px_rgba(96,165,250,0.14)]",
     variant === "secondary" &&
-      "border border-white/12 bg-white/[0.06] text-white hover:bg-white/[0.1]",
+      "border border-white/12 bg-white/[0.06] text-white hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.1]",
     variant === "ghost" &&
       "text-slate-300 hover:bg-white/[0.06] hover:text-white",
     className,
@@ -29,7 +33,7 @@ export function Button({
       {children}
     </Link>
   ) : (
-    <button className={styles} type={type}>
+    <button className={styles} onClick={onClick} type={type}>
       {children}
     </button>
   );
@@ -45,7 +49,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-white/[0.08] bg-white/[0.035] shadow-[0_12px_48px_rgba(0,0,0,0.18)]",
+        "rounded-2xl border border-white/[0.08] bg-white/[0.035] shadow-[0_12px_48px_rgba(0,0,0,0.18)] transition-all duration-300",
         className,
       )}
     >
@@ -109,11 +113,15 @@ export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <Link
       href="/"
-      className="flex items-center gap-2.5 text-sm font-bold tracking-tight text-white"
+      className="group flex items-center gap-2.5 text-sm font-bold tracking-tight text-white"
     >
-      <span className="grid size-8 place-items-center rounded-xl bg-gradient-to-br from-blue-400 to-violet-500 shadow-[0_0_24px_rgba(96,165,250,0.35)]">
-        O
-      </span>
+      <Image
+        alt=""
+        className="size-8 transition-transform duration-300 group-hover:rotate-[-4deg] group-hover:scale-105"
+        height="32"
+        src="/outlier-mark.svg"
+        width="32"
+      />
       {!compact && "Outlier Brief"}
     </Link>
   );

@@ -6,23 +6,26 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#07090f]/80 backdrop-blur-xl">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 lg:px-8"
         aria-label="Main navigation"
       >
         <Logo />
         <div className="hidden items-center gap-7 text-sm text-slate-400 md:flex">
-          <Link className="hover:text-white" href="/#features">
+          <Link className="transition hover:text-white" href="/#features">
             Features
           </Link>
-          <Link className="hover:text-white" href="/reports/sample">
+          <Link className="transition hover:text-white" href="/reports/sample">
             Demo
           </Link>
-          <Link className="hover:text-white" href="/#pricing">
+          <Link className="transition hover:text-white" href="/#pricing">
             Pricing
           </Link>
         </div>
         <Button href="/dashboard" variant="secondary">
-          Open Dashboard
+          Open Dashboard{" "}
+          <span className="ml-2 transition-transform group-hover:translate-x-0.5">
+            {"->"}
+          </span>
         </Button>
       </nav>
     </header>
@@ -62,7 +65,9 @@ export function PricingCard({
   return (
     <Card
       className={
-        featured ? "relative border-blue-400/35 bg-blue-400/[0.08] p-6" : "p-6"
+        featured
+          ? "relative border-blue-400/35 bg-blue-400/[0.08] p-6 hover:-translate-y-1 hover:border-blue-300/50"
+          : "p-6 hover:-translate-y-1 hover:border-white/[0.16]"
       }
     >
       {featured && (
@@ -103,8 +108,8 @@ export function FeatureCard({
   children: ReactNode;
 }) {
   return (
-    <Card className="p-6">
-      <div className="mb-5 grid size-10 place-items-center rounded-xl bg-blue-400/10 text-blue-200">
+    <Card className="group p-6 hover:-translate-y-1 hover:border-blue-400/25 hover:bg-blue-400/[0.045]">
+      <div className="mb-5 grid size-10 place-items-center rounded-xl bg-blue-400/10 text-blue-200 transition group-hover:bg-blue-400/20">
         {icon}
       </div>
       <h3 className="font-semibold text-white">{title}</h3>

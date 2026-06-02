@@ -15,7 +15,18 @@ export default function Home() {
       <main className="overflow-hidden">
         <section className="relative px-5 pb-20 pt-20 lg:px-8 lg:pb-28 lg:pt-28">
           <div className="absolute inset-x-0 top-0 -z-10 mx-auto h-[580px] max-w-5xl bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.16),transparent_68%)]" />
-          <div className="mx-auto max-w-7xl text-center">
+          <div className="hero-atmosphere absolute inset-x-0 top-0 -z-20 mx-auto h-[760px] max-w-[1500px] opacity-35">
+            <Image
+              alt=""
+              className="object-cover object-center mix-blend-screen"
+              fill
+              priority
+              sizes="100vw"
+              src="/images/outlier-brief-hero-atmosphere.webp"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#07090f]/30 via-[#07090f]/65 to-[#07090f]" />
+          </div>
+          <div className="mx-auto max-w-7xl text-center" data-reveal>
             <Badge tone="blue">Research intelligence for creators</Badge>
             <h1 className="mx-auto mt-7 max-w-4xl text-5xl font-semibold tracking-[-0.06em] text-white md:text-7xl">
               Find the videos your competitors wish they made.
@@ -25,18 +36,27 @@ export default function Home() {
               and turns them into clear, actionable content opportunities.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button href="/reports/sample">View Sample Report</Button>
+              <Button href="/reports/sample">
+                View Sample Report{" "}
+                <span className="ml-2 transition-transform group-hover:translate-x-0.5">
+                  {"->"}
+                </span>
+              </Button>
               <Button href="/dashboard" variant="secondary">
                 Open Dashboard
               </Button>
             </div>
-            <Card className="mx-auto mt-14 max-w-6xl overflow-hidden bg-[#0b0e17]/90 p-3 text-left shadow-[0_40px_110px_rgba(37,99,235,0.14)]">
+            <Card className="float-slow mx-auto mt-14 max-w-6xl overflow-hidden border-white/[0.12] bg-[#0b0e17]/90 p-3 text-left shadow-[0_40px_110px_rgba(37,99,235,0.18)]">
               <div className="flex items-center gap-2 border-b border-white/[0.06] px-2 pb-3">
                 <span className="size-2.5 rounded-full bg-red-400/70" />
                 <span className="size-2.5 rounded-full bg-amber-300/70" />
                 <span className="size-2.5 rounded-full bg-emerald-400/70" />
                 <span className="ml-3 text-xs text-slate-500">
                   Weekly niche intelligence / Minecraft
+                </span>
+                <span className="ml-auto hidden items-center gap-2 text-xs text-emerald-300 sm:flex">
+                  <span className="size-1.5 rounded-full bg-emerald-300 shadow-[0_0_10px_rgba(110,231,183,0.8)]" />
+                  Live analysis
                 </span>
               </div>
               <div className="grid gap-3 p-2 pt-4 lg:grid-cols-[1fr_320px]">
@@ -61,7 +81,10 @@ export default function Home() {
             </Card>
           </div>
         </section>
-        <section className="border-y border-white/[0.06] bg-white/[0.02] px-5 py-20 lg:px-8">
+        <section
+          className="border-y border-white/[0.06] bg-white/[0.02] px-5 py-20 lg:px-8"
+          data-reveal
+        >
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <SectionHeader
               eyebrow="The problem"
@@ -87,7 +110,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="px-5 py-24 lg:px-8" id="features">
+        <section className="px-5 py-24 lg:px-8" data-reveal id="features">
           <div className="mx-auto max-w-7xl">
             <SectionHeader
               eyebrow="A clearer workflow"
@@ -108,7 +131,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="px-5 pb-24 lg:px-8">
+        <section className="px-5 pb-24 lg:px-8" data-reveal>
           <div className="mx-auto max-w-7xl">
             <Card className="grid overflow-hidden lg:grid-cols-[1.1fr_0.9fr]">
               <div className="p-7 md:p-10">
@@ -164,6 +187,7 @@ export default function Home() {
         </section>
         <section
           className="border-y border-white/[0.06] bg-white/[0.02] px-5 py-24 lg:px-8"
+          data-reveal
           id="pricing"
         >
           <div className="mx-auto max-w-7xl">
@@ -209,7 +233,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="px-5 py-24 text-center lg:px-8">
+        <section className="px-5 py-24 text-center lg:px-8" data-reveal>
           <h2 className="text-4xl font-semibold tracking-tight text-white">
             Stop guessing. Start studying what already works.
           </h2>
@@ -222,3 +246,4 @@ export default function Home() {
     </>
   );
 }
+import Image from "next/image";
